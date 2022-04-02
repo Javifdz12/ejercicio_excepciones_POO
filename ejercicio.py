@@ -1,20 +1,4 @@
 import re
-"""x=input("introduce tu correo electronico ")
-contador=0
-if re.search(".*@.*\..*", x)==None and contador<2:
-    contador+=1
-    print("es una entrada incorrecta")
-    x=input("introduce un correo electronico ")
-elif re.search(".*@.*\..*", x)==None and contador==1:
-    x=input("correo electronico debe tener formato xxx@xxx.xx")
-    contador+=1
-elif re.search(".*@.*\..*", x)==None and contador>=2:
-    print("cuenta bloqueada a causa de un ataque")
-else:
-    for i in range(len(x)):
-        if x[i]=="@":
-            print(f'Bienvenido {x[:i]}')"""
-
 class mail:
     def añadir_correo(nombre,correo):
         contador=0
