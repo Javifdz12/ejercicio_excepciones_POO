@@ -20,6 +20,7 @@ class mail:
                             print("cuenta bloqueada por alertar de un ataque")
                         else:
                             print(f'Bienvenido {correo[:i]}')
+
         else:
             for i in range(len(correo)):
                     if correo[i]=="@":
