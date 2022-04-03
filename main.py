@@ -1,5 +1,4 @@
-from clases.ejercicio import mail
+from clases.ejercicio import añadir_correo
 
-
-if __name__ == "__main__":
-    mail.añadir_correo("dani","dani")
+if __name__ == '__main__':
+    añadir_correo("dani","dani")

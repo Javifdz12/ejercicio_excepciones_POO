@@ -1,80 +1,76 @@
 import re
 
-class mail:
-    def añadir_correo(nombre,correo):
-        contador=0
 
-        if re.search(".*@.*\..*", correo)==None:
+def añadir_correo(nombre,correo):
+        #contador=0
+
+        if correo=="" or correo is None:
             print("es una entrada incorrecta")
             correo=input("introduce un correo electronico: ")
-            while re.search(".*@.*\..*", correo)==None:
-                correo=input("correo electronico debe tener formato xxx@xxx.xx: ")
-                contador+=1
-                if contador==5:
-                    print("cuenta bloqueada por alerta de un ataque")
-                    break
+            añadir_correo(nombre,correo)
 
-            else:
-                for i in range(len(correo)):
-                    if correo[i]=="@":
-                        if correo[:i]!=nombre:
-                            print("cuenta bloqueada por alertar de un ataque")
-                        else:
-                            print(f'Bienvenido {correo[:i]}')
+        elif re.search(".*@.*\..*", correo)==None:
+            correo=input("correo electronico debe tener formato xxx@xxx.xx: ")
+            añadir_correo(nombre,correo)
 
         else:
             for i in range(len(correo)):
                     if correo[i]=="@":
                         if correo[:i]!=nombre:
-                            print("cuenta bloqueada por alertar de un ataque")
+                            print("cuenta bloqueada por alerta de un ataque")
                         else:
                             print(f'Bienvenido {correo[:i]}')
 
-
-mail.añadir_correo("dani","dani")
-
+añadir_correo("dani","dani")
 
 
-class mail_2:
-    def añadir_correo(nombre,correo):
+
+def añadir_correo2(nombre,correo):
 
 
-        if re.search(".*@.*\..*", correo)==None:
-            raise email_mal_formateado
+    if re.search(".*@.*\..*", correo)==None:
+        raise email_mal_formateado
 
-        elif correo is None or correo=="":
-            raise entrada_incorrecta
+    elif correo is None or correo=="":
+        raise entrada_incorrecta
 
-        elif re.search(".*@.*\..*", correo)!=None:
-            for i in range(len(correo)):
-                    if correo[i]=="@":
-                        if correo[:i]!=nombre:
-                            raise ciberataque
-                        else:
-                            print(f'Bienvenido {correo[:i]}')
+    elif re.search(".*@.*\..*", correo)!=None:
+        for i in range(len(correo)):
+                if correo[i]=="@":
+                    if correo[:i]!=nombre:
+                        raise ciberataque
+                    else:
+                        print(f'Bienvenido {correo[:i]}')
 
+nombre=input("nombre: ")
+correo=input("correo:")
 
-class entrada_incorrecta(BaseException,mail_2):
+class entrada_incorrecta(BaseException):
+
     try:
-        re.search(".*@.*\..*", mail_2.correo)!=None
-    except:
-        print("es una entrada incorrecta")
-        mail_2.correo=input("introduce un correo electronico: ")
+        if correo=="" or correo is None:
+            print("es una entrada incorrecta")
+            correo=input("introduce un correo electronico: ")
+    finally:
+        pass
 
 
-class email_mal_formateado(BaseException,mail_2):
+
+class email_mal_formateado(BaseException):
     try:
-        re.search(".*@.*\..*", mail_2.correo)!=None
-    except:
-        mail_2.correo=input("correo electronico debe tener formato xxx@xxx.xx: ")
+        if re.search(".*@.*\..*",correo)!=None:
+            pass
+    finally:
+        correo=input("correo electronico debe tener formato xxx@xxx.xx: ")
 
 
 
-class ciberataque(BaseException,mail_2):
+class ciberataque(BaseException):
     try:
-        re.search(".*@.*\..*",mail_2.correo)==None
-    except:
+        if re.search(".*@.*\..*",correo)==None:
+            pass
+    finally:
         print("cuenta bloqueada por alertar de un ataque")
 
 
-mail_2.añadir_correo("javi","j")
+añadir_correo(nombre,correo)
